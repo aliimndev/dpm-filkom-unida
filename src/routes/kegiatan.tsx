@@ -29,7 +29,7 @@ function Kegiatan() {
       <section className="px-8 pb-16">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {activities.map((a) => (
-            <div key={a.short} className="flex flex-col gap-4 rounded-2xl border border-[#c5cdd1] bg-white p-8">
+            <div key={a.short} className="flex flex-col gap-4 rounded-2xl border border-[#c5cdd1] bg-white p-8 transition hover:border-[#2BB3BD]">
               <span className="font-mono text-[10px] tracking-[1.1px] text-[#2BB3BD]">{a.short}</span>
               <h2 className="text-[28px] font-medium tracking-[-0.8px] text-[#164653]">{a.name}</h2>
               <p className="m-0 text-[14px] leading-[1.6] text-[#4a5a60]">

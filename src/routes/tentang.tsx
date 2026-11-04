@@ -31,7 +31,7 @@ function Tentang() {
             'Akuntabilitas',
             'Kolaborasi',
           ].map((t) => (
-            <div key={t} className="rounded-2xl border border-[#c5cdd1] bg-white p-6">
+            <div key={t} className="rounded-2xl border border-[#c5cdd1] bg-white p-6 transition hover:border-[#2BB3BD]">
               <p className="m-0 text-[15px] text-[#164653]">{t}</p>
             </div>
           ))}
@@ -51,7 +51,7 @@ function Tentang() {
             { name: 'Komisi II', scope: 'Aspirasi & Legislasi' },
             { name: 'Komisi III', scope: 'Humas & Kominfo' },
           ].map((c) => (
-            <div key={c.name} className="rounded-2xl border border-[#c5cdd1] bg-white p-6">
+            <div key={c.name} className="rounded-2xl border border-[#c5cdd1] bg-white p-6 transition hover:border-[#2BB3BD]">
               <span className="font-mono text-[10px] tracking-[1.1px] text-[#E78E3F]">{c.name.toUpperCase()}</span>
               <h3 className="mt-2 text-[20px] font-medium tracking-[-0.4px] text-[#164653]">{c.name}</h3>
               <p className="m-0 mt-1 text-[14px] text-[#4a5a60]">{c.scope}</p>

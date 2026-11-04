@@ -41,7 +41,7 @@ function Aduan() {
       </section>
 
       <section className="px-8 pb-16">
-        <div className="max-w-[720px] rounded-2xl border border-[#c5cdd1] bg-white p-8">
+        <div className="max-w-[720px] rounded-2xl border border-[#c5cdd1] bg-white p-8 transition hover:border-[#2BB3BD]">
           {submitted ? (
             <div className="text-center">
               <h2 className="text-[24px] font-medium text-[#164653]">Aduan terkirim.</h2>
