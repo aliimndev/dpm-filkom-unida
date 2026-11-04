@@ -13,12 +13,10 @@ function Tentang() {
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">TENTANG KAMI</span>
         </div>
         <h1 className="max-w-[720px] text-[52px] font-medium leading-[1.05] tracking-[-1.8px] text-[#164653]">
-          Lembaga perwakilan mahasiswa Fakultas Ilmu Komputer UNIDA.
+          Lembaga perwakilan mahasiswa FILKOM.
         </h1>
-        <p className="mt-6 max-w-[640px] text-[16px] leading-[1.6] text-[#4a5a60]">
-          Dewan Perwakilan Mahasiswa Fakultas Ilmu Komputer UNIDA adalah lembaga
-          legislatif dan perwakilan mahasiswa. Kami menyalurkan aspirasi, mengawal
-          kebijakan fakultas, dan menjaga akuntabilitas organisasi kemahasiswaan.
+        <p className="mt-6 max-w-[520px] text-[16px] leading-[1.6] text-[#4a5a60]">
+          Legislatif dan perwakilan mahasiswa. Menyalurkan aspirasi, mengawal kebijakan, menjaga akuntabilitas.
         </p>
       </section>
 
@@ -28,10 +26,10 @@ function Tentang() {
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {[
-            'Menyalurkan aspirasi mahasiswa',
-            'Mengawal kebijakan fakultas',
-            'Menjaga akuntabilitas organisasi',
-            'Membangun ruang kolaborasi',
+            'Aspirasi mahasiswa',
+            'Kebijakan fakultas',
+            'Akuntabilitas',
+            'Kolaborasi',
           ].map((t) => (
             <div key={t} className="rounded-2xl border border-[#c5cdd1] bg-white p-6">
               <p className="m-0 text-[15px] text-[#164653]">{t}</p>

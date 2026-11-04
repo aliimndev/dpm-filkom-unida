@@ -226,8 +226,7 @@ function Home() {
             Semua peran mahasiswa.
           </h2>
           <p className="max-w-[430px] text-[14px] leading-[1.6] text-[#4a5a60]">
-            Kami legislator, pengawas anggaran, dan jembatan antara mahasiswa dan
-            fakultas. Setiap aspirasi punya tiket, setiap keputusan punya catatan.
+            Legislatif & perwakilan mahasiswa FILKOM.
           </p>
           <div className="flex w-[470px] flex-col">
             {links.map((l) => (
