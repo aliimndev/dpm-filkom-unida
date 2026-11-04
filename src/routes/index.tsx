@@ -400,28 +400,28 @@ function Home() {
         ))}
       </section>
 
-      {/* CTA */}
+      {/* CTA - Aduan */}
       <section className="px-8 pb-16 pt-0">
         <div className="flex flex-col items-center gap-5 rounded-3xl bg-[#164653] px-12 py-[72px] text-center">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#a0b0b6]">
-            REKRUTMEN TERBUKA · BATCH 7
+            ADUAN MAHASISWA
           </span>
           <h2 className="max-w-[760px] text-[52px] font-medium leading-[1.1] tracking-[-1.8px] text-white">
-            Siap berkontribusi untuk FILKOM?
+            Sampaikan aspirasi dan aduan Anda.
           </h2>
           <p className="max-w-[560px] text-[14px] leading-[1.6] text-[#a0b0b6]">
-            Bergabung dengan DPM FILKOM UNIDA — wadah bagi mahasiswa yang ingin
-            mengawal kebijakan dan membangun budaya kolaborasi.
+            DPM FILKOM UNIDA menampung aspirasi, aduan, dan masukan mahasiswa
+            melalui surat aduan resmi.
           </p>
-          <button className="flex items-center gap-2 rounded-full bg-[#E78E3F] px-[22px] py-[13px] text-[13px] font-medium text-[#164653]">
-            Daftar Sekarang
+          <a
+            href="/aduan"
+            className="flex items-center gap-2 rounded-full bg-[#E78E3F] px-[22px] py-[13px] text-[13px] font-medium text-[#164653]"
+          >
+            Buat Surat Aduan
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>
-          </button>
-          <span className="font-mono text-[10px] tracking-[0.8px] text-[#6b7a80]">
-            Pendaftaran ditutup 28 Februari 2026
-          </span>
+          </a>
         </div>
       </section>
 

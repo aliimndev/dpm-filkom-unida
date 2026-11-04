@@ -28,18 +28,12 @@ export default function Nav() {
         ))}
       </div>
       <div className="flex items-center gap-[18px]">
-        <a
-          href="mailto:dpm@filkom.ac.id"
-          className="text-[13px] text-[#4a5a60] hover:text-[#164653]"
-        >
-          Kontak
-        </a>
-        <a
-          href="mailto:dpm@filkom.ac.id"
+        <Link
+          to="/aduan"
           className="flex items-center gap-[6px] rounded-full bg-[#2BB3BD] px-[14px] py-[8px] text-[13px] text-[#164653] font-medium"
         >
-          Gabung
-        </a>
+          Aduan
+        </Link>
       </div>
     </nav>
   )
