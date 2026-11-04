@@ -3,7 +3,7 @@ export default function Nav() {
   return (
     <nav className="flex w-full items-center justify-between border-b border-[#c5cdd1] bg-white px-8" style={{ height: 68 }}>
       <div className="flex items-center gap-[10px]">
-        <span className="h-3 w-3 rounded-full bg-[#164653]" />
+        <img src="/logo-dpm.webp" alt="DPM FILKOM" className="h-8 w-8 object-contain" />
         <span className="text-[15px] font-semibold tracking-[-0.3px] text-[#164653]">
           DPM FILKOM
         </span>
