@@ -1,23 +1,27 @@
 import { createFileRoute } from '@tanstack/react-router'
+import Nav from '../components/Nav'
+import SiteFooter from '../components/SiteFooter'
 
-export const Route = createFileRoute('/about')({
-  component: About,
-})
+export const Route = createFileRoute('/about')({ component: About })
 
 function About() {
   return (
-    <main className="page-wrap px-4 py-12">
-      <section className="island-shell rounded-2xl p-6 sm:p-8">
-        <p className="island-kicker mb-2">About</p>
-        <h1 className="display-title mb-3 text-4xl font-bold text-[var(--sea-ink)] sm:text-5xl">
+    <div className="min-h-screen bg-[#DCE2E6] text-[#1E2B30]">
+      <Nav />
+      <section className="px-8 pt-[92px] pb-16">
+        <div className="mb-4 flex items-center gap-2">
+          <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">TENTANG</span>
+        </div>
+        <h1 className="max-w-[720px] text-[52px] font-medium leading-[1.05] tracking-[-1.8px] text-[#164653]">
           A small starter with room to grow.
         </h1>
-        <p className="m-0 max-w-3xl text-base leading-8 text-[var(--sea-ink-soft)]">
-          TanStack Start gives you type-safe routing, server functions, and
-          modern SSR defaults. Use this as a clean foundation, then layer in
-          your own routes, styling, and add-ons.
+        <p className="mt-6 max-w-[640px] text-[16px] leading-[1.6] text-[#4a5a60]">
+          TanStack Start gives you type-safe routing, server functions, and modern
+          SSR defaults. Use this as a clean foundation, then layer in your own
+          routes, styling, and add-ons.
         </p>
       </section>
-    </main>
+      <SiteFooter />
+    </div>
   )
 }

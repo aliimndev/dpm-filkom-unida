@@ -11,6 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as DokumentasiRouteImport } from './routes/dokumentasi'
+import { Route as KegiatanRouteImport } from './routes/kegiatan'
+import { Route as KomisiRouteImport } from './routes/komisi'
+import { Route as TentangRouteImport } from './routes/tentang'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +26,75 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DokumentasiRoute = DokumentasiRouteImport.update({
+  id: '/dokumentasi',
+  path: '/dokumentasi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KegiatanRoute = KegiatanRouteImport.update({
+  id: '/kegiatan',
+  path: '/kegiatan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KomisiRoute = KomisiRouteImport.update({
+  id: '/komisi',
+  path: '/komisi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TentangRoute = TentangRouteImport.update({
+  id: '/tentang',
+  path: '/tentang',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/dokumentasi': typeof DokumentasiRoute
+  '/kegiatan': typeof KegiatanRoute
+  '/komisi': typeof KomisiRoute
+  '/tentang': typeof TentangRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/dokumentasi': typeof DokumentasiRoute
+  '/kegiatan': typeof KegiatanRoute
+  '/komisi': typeof KomisiRoute
+  '/tentang': typeof TentangRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/dokumentasi': typeof DokumentasiRoute
+  '/kegiatan': typeof KegiatanRoute
+  '/komisi': typeof KomisiRoute
+  '/tentang': typeof TentangRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    '/' | '/about' | '/dokumentasi' | '/kegiatan' | '/komisi' | '/tentang'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to: '/' | '/about' | '/dokumentasi' | '/kegiatan' | '/komisi' | '/tentang'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/dokumentasi'
+    | '/kegiatan'
+    | '/komisi'
+    | '/tentang'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  DokumentasiRoute: typeof DokumentasiRoute
+  KegiatanRoute: typeof KegiatanRoute
+  KomisiRoute: typeof KomisiRoute
+  TentangRoute: typeof TentangRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +113,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dokumentasi': {
+      id: '/dokumentasi'
+      path: '/dokumentasi'
+      fullPath: '/dokumentasi'
+      preLoaderRoute: typeof DokumentasiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kegiatan': {
+      id: '/kegiatan'
+      path: '/kegiatan'
+      fullPath: '/kegiatan'
+      preLoaderRoute: typeof KegiatanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/komisi': {
+      id: '/komisi'
+      path: '/komisi'
+      fullPath: '/komisi'
+      preLoaderRoute: typeof KomisiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tentang': {
+      id: '/tentang'
+      path: '/tentang'
+      fullPath: '/tentang'
+      preLoaderRoute: typeof TentangRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  DokumentasiRoute: DokumentasiRoute,
+  KegiatanRoute: KegiatanRoute,
+  KomisiRoute: KomisiRoute,
+  TentangRoute: TentangRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
