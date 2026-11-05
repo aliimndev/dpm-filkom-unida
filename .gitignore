@@ -11,3 +11,9 @@ dist-ssr
 .vinxi
 __unconfig*
 todos.json
+
+# uploaded assets
+*.pdf
+*.jpeg
+*.jpg
+*.png
