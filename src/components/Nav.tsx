@@ -4,7 +4,7 @@ const items = [
   { label: 'Beranda', to: '/' as const },
   { label: 'Tentang', to: '/tentang' as const },
   { label: 'Program', to: '/komisi' as const },
-  { label: 'Berita', to: '/dokumentasi' as const },
+  { label: 'Berita', to: '/berita' as const },
 ]
 
 export default function Nav() {
