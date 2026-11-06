@@ -13,7 +13,6 @@ function Aduan() {
     topik: '',
     isi: '',
   })
-  const [ticket, setTicket] = useState<null | typeof form>(null)
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -21,7 +20,6 @@ function Aduan() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setTicket({ ...form })
   }
 
   return (
@@ -50,7 +48,7 @@ function Aduan() {
         </div>
       </section>
 
-      <section className="flex flex-col gap-8 px-8 pb-16 md:flex-row">
+      <section className="flex flex-col gap-8 px-8 pb-16 md:flex-row md:items-stretch">
         <div className="flex-1">
           <div className="mb-4 flex items-center justify-between border-b border-[#c5cdd1] pb-2">
             <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">FORM ADUAN</span>
@@ -129,44 +127,36 @@ function Aduan() {
           <div className="mb-4 flex items-center justify-between border-b border-[#c5cdd1] pb-2">
             <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">TIKET ADUAN</span>
           </div>
-          {ticket ? (
-            <div className="flex flex-col gap-4 rounded-2xl border border-[#164653] bg-white p-6">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-[10px] tracking-[1.1px] text-[#E78E3F]">TIKET #ADU-001</span>
-                <span className="rounded-full bg-[#2BB3BD] px-3 py-1 text-[10px] font-medium text-[#164653]">DIPROSES</span>
-              </div>
-              <div className="flex flex-col gap-2 border-t border-[#c5cdd1] pt-4">
-                <div className="flex justify-between">
-                  <span className="font-mono text-[10px] text-[#6b7a80]">NAMA</span>
-                  <span className="text-[13px] text-[#164653]">{ticket.nama}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-mono text-[10px] text-[#6b7a80]">NIM</span>
-                  <span className="text-[13px] text-[#164653]">{ticket.nim}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-mono text-[10px] text-[#6b7a80]">KOMISI</span>
-                  <span className="text-[13px] text-[#164653]">{ticket.komisi}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-mono text-[10px] text-[#6b7a80]">TOPIK</span>
-                  <span className="text-[13px] text-[#164653]">{ticket.topik}</span>
-                </div>
-              </div>
-              <div className="rounded-xl bg-[#DCE2E6] p-4">
-                <p className="m-0 text-[12px] leading-[1.5] text-[#4a5a60]">{ticket.isi}</p>
-              </div>
-              <p className="m-0 text-[11px] text-[#6b7a80]">
-                Aduan akan ditindaklanjuti oleh komisi terkait.
-              </p>
+          <div className="flex h-full flex-col gap-4 rounded-2xl border border-[#164653] bg-white p-6">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[10px] tracking-[1.1px] text-[#E78E3F]">TIKET #ADU-001</span>
+              <span className="rounded-full bg-[#2BB3BD] px-3 py-1 text-[10px] font-medium text-[#164653]">DIPROSES</span>
             </div>
-          ) : (
-            <div className="rounded-2xl border border-dashed border-[#c5cdd1] bg-white p-10 text-center">
-              <p className="m-0 text-[13px] text-[#6b7a80]">
-                Tiket aduan akan muncul di sini setelah formulir dikirim.
-              </p>
+            <div className="flex flex-col gap-2 border-t border-[#c5cdd1] pt-4">
+              <div className="flex justify-between">
+                <span className="font-mono text-[10px] text-[#6b7a80]">NAMA</span>
+                <span className="text-[13px] text-[#164653]">{form.nama || '—'}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="font-mono text-[10px] text-[#6b7a80]">NIM</span>
+                <span className="text-[13px] text-[#164653]">{form.nim || '—'}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="font-mono text-[10px] text-[#6b7a80]">KOMISI</span>
+                <span className="text-[13px] text-[#164653]">{form.komisi}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="font-mono text-[10px] text-[#6b7a80]">TOPIK</span>
+                <span className="text-[13px] text-[#164653]">{form.topik || '—'}</span>
+              </div>
             </div>
-          )}
+            <div className="rounded-xl bg-[#DCE2E6] p-4">
+              <p className="m-0 text-[12px] leading-[1.5] text-[#4a5a60]">{form.isi || 'Isi aduan akan tampil di sini...'}</p>
+            </div>
+            <p className="m-0 text-[11px] text-[#6b7a80]">
+              Aduan akan ditindaklanjuti oleh komisi terkait.
+            </p>
+          </div>
         </div>
       </section>
 
