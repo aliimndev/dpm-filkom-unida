@@ -5,9 +5,9 @@ export default function SiteFooter() {
     { title: 'Kontak', items: ['dpm@filkom.ac.id', 'Sekretariat GKB', 'Instagram'] },
   ]
   return (
-    <footer className="flex w-full flex-col gap-9 border-t border-[#2a3a40] bg-[#1E2B30] px-8 py-12">
-      <div className="flex items-start justify-between">
-        <div className="flex w-full md:w-[360px] flex-col gap-3">
+    <footer className="flex w-full flex-col gap-9 border-t border-[#2a3a40] bg-[#1E2B30] px-4 py-12 md:px-8">
+      <div className="flex flex-col items-start justify-between gap-8 md:flex-row">
+        <div className="flex w-full flex-col gap-3 md:w-[360px]">
           <div className="flex items-center gap-[10px]">
             <img src="/logo-dpm.webp" alt="DPM FILKOM" className="h-8 w-8 object-contain brightness-0 invert" />
             <span className="text-[15px] font-semibold tracking-[-0.3px] text-white">
@@ -18,7 +18,7 @@ export default function SiteFooter() {
             Dewan Perwakilan Mahasiswa Fakultas Ilmu Komputer, Universitas Brawijaya.
           </p>
         </div>
-        <div className="flex gap-16">
+        <div className="flex flex-wrap gap-8 md:gap-16">
           {cols.map((c) => (
             <div key={c.title} className="flex flex-col gap-[10px]">
               <span className="text-[11px] tracking-[1px] text-white">{c.title}</span>
