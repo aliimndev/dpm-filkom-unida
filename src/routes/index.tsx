@@ -35,17 +35,17 @@ function Home() {
       <Nav />
 
       {/* Hero */}
-      <section className="flex flex-col items-center gap-6 px-10 pt-[46px] pb-8">
+      <section className="flex flex-col items-center gap-6 px-4 pt-[46px] pb-8 md:px-10">
         <div className="flex items-center gap-2 rounded-full border border-[#c5cdd1] bg-white px-[12px] py-[6px]">
           <span className="h-[6px] w-[6px] rounded-full bg-[#E78E3F]" />
           <span className="font-mono text-[10px] tracking-[1.1px] text-[#4a5a60]">
             PERIODE 2025/2026 · FILKOM UNIDA
           </span>
         </div>
-        <h1 className="max-w-[860px] text-center text-[68px] font-medium leading-[1.04] tracking-[-2.6px] text-[#164653]">
+        <h1 className="max-w-[860px] text-center text-[40px] font-medium leading-[1.04] tracking-[-1.6px] md:text-[68px] md:tracking-[-2.6px] text-[#164653]">
           Suara mahasiswa, dijalankan jadi aksi nyata.
         </h1>
-        <p className="max-w-[600px] text-center text-[16px] leading-[1.55] text-[#4a5a60]">
+        <p className="max-w-[600px] text-center text-[15px] leading-[1.55] text-[#4a5a60] md:text-[16px]">
           DPM FILKOM UNIDA menyalurkan aspirasi, mengawal kebijakan, dan membangun
           ruang kolaborasi untuk seluruh mahasiswa Fakultas Ilmu Komputer.
         </p>
@@ -72,7 +72,7 @@ function Home() {
             06 inisiatif aktif
           </span>
         </div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {/* Card Aspirasi */}
           <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white">
             <div className="flex flex-1 flex-col justify-between gap-2 p-[18px]">
@@ -155,7 +155,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="mt-4 grid grid-cols-[912px_1fr] gap-4">
+        <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
           {/* Card Galeri */}
           <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white">
             <div className="flex flex-1 overflow-hidden">
@@ -220,7 +220,7 @@ function Home() {
       <section className="flex flex-col gap-16 px-4 py-7 md:flex-row md:px-8">
         <div className="flex w-full flex-col gap-[18px] md:w-[540px]">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">TENTANG KAMI</span>
-          <h2 className="max-w-full text-[44px] font-medium leading-[1.1] tracking-[-1.6px] text-[#164653] md:max-w-[470px]">
+          <h2 className="max-w-full text-[32px] font-medium leading-[1.1] tracking-[-1.2px] text-[#164653] md:text-[44px] md:tracking-[-1.6px] md:max-w-[470px]">
             Satu organisasi.
             <br />
             Semua peran mahasiswa.
@@ -330,7 +330,7 @@ function Home() {
           <div key={s.label} className="flex items-center">
             {i > 0 && <div className="mx-7 h-11 w-px bg-[#c5cdd1]" />}
             <div className="flex flex-col gap-[6px]">
-              <span className="text-[40px] font-medium leading-none tracking-[-1.4px] text-[#164653]">
+              <span className="text-[28px] font-medium leading-none tracking-[-1px] text-[#164653] md:text-[40px] md:tracking-[-1.4px]">
                 {s.value}
               </span>
               <span className="font-mono text-[10px] tracking-[1px] text-[#4a5a60]">
@@ -346,7 +346,7 @@ function Home() {
         <div className="flex items-end justify-between">
           <div className="flex flex-col gap-[14px]">
             <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">STRUKTUR</span>
-            <h2 className="max-w-[620px] text-[44px] font-medium leading-[1.12] tracking-[-1.6px] text-[#164653]">
+            <h2 className="max-w-[620px] text-[32px] font-medium leading-[1.12] tracking-[-1.2px] text-[#164653] md:text-[44px] md:tracking-[-1.6px]">
               Orang-orang di balik meja.
             </h2>
           </div>
@@ -357,7 +357,7 @@ function Home() {
             </svg>
           </div>
         </div>
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {team.map((m) => (
             <div key={m.name} className="flex flex-col gap-[10px]">
               <div className="flex h-[230px] items-end rounded-xl border border-[#c5cdd1] bg-[#DCE2E6] p-4">
@@ -387,7 +387,7 @@ function Home() {
           >
             <div className="flex items-center gap-6">
               <span className="font-mono text-[10px] tracking-[0.8px] text-[#6b7a80]">{n.date}</span>
-              <span className="text-[20px] font-medium tracking-[-0.4px] text-[#164653]">{n.title}</span>
+              <span className="text-[16px] font-medium tracking-[-0.4px] text-[#164653] md:text-[20px]">{n.title}</span>
             </div>
             <div className="flex items-center gap-4">
               <span className="font-mono text-[9px] tracking-[0.9px] text-[#4a5a60]">{n.tag}</span>
@@ -405,7 +405,7 @@ function Home() {
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#a0b0b6]">
             ADUAN MAHASISWA
           </span>
-          <h2 className="max-w-[760px] text-[52px] font-medium leading-[1.1] tracking-[-1.8px] text-white">
+          <h2 className="max-w-[760px] text-[32px] font-medium leading-[1.1] tracking-[-1.2px] text-white md:text-[52px] md:tracking-[-1.8px]">
             Sampaikan aspirasi dan aduan Anda.
           </h2>
           <p className="max-w-[560px] text-[14px] leading-[1.6] text-[#a0b0b6]">
