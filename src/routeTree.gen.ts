@@ -10,10 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as AduanRouteImport } from './routes/aduan'
 import { Route as BeritaRouteImport } from './routes/berita'
-import { Route as DokumentasiRouteImport } from './routes/dokumentasi'
 import { Route as KegiatanRouteImport } from './routes/kegiatan'
 import { Route as KomisiRouteImport } from './routes/komisi'
 import { Route as TentangRouteImport } from './routes/tentang'
@@ -21,11 +19,6 @@ import { Route as TentangRouteImport } from './routes/tentang'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AduanRoute = AduanRouteImport.update({
@@ -36,11 +29,6 @@ const AduanRoute = AduanRouteImport.update({
 const BeritaRoute = BeritaRouteImport.update({
   id: '/berita',
   path: '/berita',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DokumentasiRoute = DokumentasiRouteImport.update({
-  id: '/dokumentasi',
-  path: '/dokumentasi',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KegiatanRoute = KegiatanRouteImport.update({
@@ -61,20 +49,16 @@ const TentangRoute = TentangRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/aduan': typeof AduanRoute
   '/berita': typeof BeritaRoute
-  '/dokumentasi': typeof DokumentasiRoute
   '/kegiatan': typeof KegiatanRoute
   '/komisi': typeof KomisiRoute
   '/tentang': typeof TentangRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/aduan': typeof AduanRoute
   '/berita': typeof BeritaRoute
-  '/dokumentasi': typeof DokumentasiRoute
   '/kegiatan': typeof KegiatanRoute
   '/komisi': typeof KomisiRoute
   '/tentang': typeof TentangRoute
@@ -82,42 +66,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/aduan': typeof AduanRoute
   '/berita': typeof BeritaRoute
-  '/dokumentasi': typeof DokumentasiRoute
   '/kegiatan': typeof KegiatanRoute
   '/komisi': typeof KomisiRoute
   '/tentang': typeof TentangRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/about'
-    | '/aduan'
-    | '/berita'
-    | '/dokumentasi'
-    | '/kegiatan'
-    | '/komisi'
-    | '/tentang'
+  fullPaths: '/' | '/aduan' | '/berita' | '/kegiatan' | '/komisi' | '/tentang'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/about'
-    | '/aduan'
-    | '/berita'
-    | '/dokumentasi'
-    | '/kegiatan'
-    | '/komisi'
-    | '/tentang'
+  to: '/' | '/aduan' | '/berita' | '/kegiatan' | '/komisi' | '/tentang'
   id:
     | '__root__'
     | '/'
-    | '/about'
     | '/aduan'
     | '/berita'
-    | '/dokumentasi'
     | '/kegiatan'
     | '/komisi'
     | '/tentang'
@@ -125,10 +89,8 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
   AduanRoute: typeof AduanRoute
   BeritaRoute: typeof BeritaRoute
-  DokumentasiRoute: typeof DokumentasiRoute
   KegiatanRoute: typeof KegiatanRoute
   KomisiRoute: typeof KomisiRoute
   TentangRoute: typeof TentangRoute
@@ -143,13 +105,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/aduan': {
       id: '/aduan'
       path: '/aduan'
@@ -162,13 +117,6 @@ declare module '@tanstack/react-router' {
       path: '/berita'
       fullPath: '/berita'
       preLoaderRoute: typeof BeritaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dokumentasi': {
-      id: '/dokumentasi'
-      path: '/dokumentasi'
-      fullPath: '/dokumentasi'
-      preLoaderRoute: typeof DokumentasiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kegiatan': {
@@ -197,10 +145,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
   AduanRoute: AduanRoute,
   BeritaRoute: BeritaRoute,
-  DokumentasiRoute: DokumentasiRoute,
   KegiatanRoute: KegiatanRoute,
   KomisiRoute: KomisiRoute,
   TentangRoute: TentangRoute,

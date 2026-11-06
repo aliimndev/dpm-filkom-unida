@@ -27,9 +27,6 @@ export default function Nav() {
           ))}
         </div>
         <div className="hidden items-center gap-[18px] md:flex">
-          <a href="mailto:dpm@filkom.ac.id" className="text-[13px] text-[#4a5a60] hover:text-[#164653]">
-            Kontak
-          </a>
           <Link to="/aduan" className="flex items-center gap-[6px] rounded-full bg-[#2BB3BD] px-[14px] py-[8px] text-[13px] text-[#164653] font-medium">
             Aduan
           </Link>
@@ -55,9 +52,6 @@ export default function Nav() {
               {it.label}
             </Link>
           ))}
-          <a href="mailto:dpm@filkom.ac.id" className="text-[14px] text-[#4a5a60] hover:text-[#164653]">
-            Kontak
-          </a>
           <Link
             to="/aduan"
             onClick={() => setOpen(false)}
