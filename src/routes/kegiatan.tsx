@@ -13,20 +13,20 @@ function Kegiatan() {
   return (
     <div className="min-h-screen bg-[#DCE2E6] text-[#1E2B30]">
       <Nav />
-      <section className="px-8 pt-[46px] pb-8">
+      <section className="px-4 md:px-8 pt-[46px] pb-8">
         <div className="mb-4 flex items-center gap-2">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">KEGIATAN</span>
         </div>
-        <h1 className="max-w-[720px] text-[52px] font-medium leading-[1.05] tracking-[-1.8px] text-[#164653]">
+        <h1 className="max-w-full md:w-[720px] text-[52px] font-medium leading-[1.05] tracking-[-1.8px] text-[#164653]">
           Dua agenda utama DPM.
         </h1>
-        <p className="mt-6 max-w-[640px] text-[16px] leading-[1.6] text-[#4a5a60]">
+        <p className="mt-6 max-w-full md:w-[640px] text-[16px] leading-[1.6] text-[#4a5a60]">
           Musyawarah Kerja dan Musyawarah Besar adalah kegiatan utama DPM FILKOM
           UNIDA dalam menjalankan fungsi perwakilan mahasiswa.
         </p>
       </section>
 
-      <section className="px-8 pb-8">
+      <section className="px-4 md:px-8 pb-8">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {activities.map((a) => (
             <div key={a.short} className="flex flex-col gap-4 rounded-2xl border border-[#c5cdd1] bg-white p-8 transition hover:border-[#2BB3BD]">

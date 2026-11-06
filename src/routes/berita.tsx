@@ -8,13 +8,13 @@ function Berita() {
   return (
     <div className="min-h-screen bg-[#DCE2E6] text-[#1E2B30]">
       <Nav />
-      <section className="flex gap-16 px-8 pt-[46px] pb-8">
-        <div className="flex w-full flex-col gap-[18px] md:w-[540px]">
+      <section className="flex flex-col gap-16 px-4 md:px-8 pt-[46px] pb-8 md:flex-row">
+        <div className="flex w-full flex-col gap-[18px] md:w-full md:w-[540px]">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">BERITA</span>
-          <h1 className="max-w-[470px] text-[44px] font-medium leading-[1.1] tracking-[-1.6px] text-[#164653]">
+          <h1 className="max-w-full md:w-[470px] text-[44px] font-medium leading-[1.1] tracking-[-1.6px] text-[#164653]">
             Kabar DPM FILKOM.
           </h1>
-          <p className="max-w-[430px] text-[14px] leading-[1.6] text-[#4a5a60]">
+          <p className="max-w-full md:w-[430px] text-[14px] leading-[1.6] text-[#4a5a60]">
             Informasi dan pembaruan terbaru dari DPM FILKOM UNIDA.
           </p>
         </div>
@@ -31,7 +31,7 @@ function Berita() {
         </div>
       </section>
 
-      <section className="px-8 pb-8">
+      <section className="px-4 md:px-8 pb-8">
         <div className="mb-4 flex items-center justify-between border-b border-[#c5cdd1] pb-2">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">ARSIP BERITA</span>
           <span className="text-[11px] text-[#4a5a60]">Segera hadir</span>

@@ -7,7 +7,7 @@ export default function SiteFooter() {
   return (
     <footer className="flex w-full flex-col gap-9 border-t border-[#2a3a40] bg-[#1E2B30] px-8 py-12">
       <div className="flex items-start justify-between">
-        <div className="flex w-[360px] flex-col gap-3">
+        <div className="flex w-full md:w-[360px] flex-col gap-3">
           <div className="flex items-center gap-[10px]">
             <img src="/logo-dpm.webp" alt="DPM FILKOM" className="h-8 w-8 object-contain brightness-0 invert" />
             <span className="text-[15px] font-semibold tracking-[-0.3px] text-white">

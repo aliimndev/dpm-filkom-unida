@@ -63,7 +63,7 @@ function Home() {
       </section>
 
       {/* Program Grid */}
-      <section className="px-8 pb-14 pt-0">
+      <section className="px-4 md:px-8 pb-14 pt-0">
         <div className="mb-4 flex items-center justify-between border-b border-[#c5cdd1] pb-2">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">
             PROGRAM &amp; LAYANAN
@@ -217,18 +217,18 @@ function Home() {
       </section>
 
       {/* About */}
-      <section className="flex gap-16 px-8 py-7">
-        <div className="flex w-[540px] flex-col gap-[18px]">
+      <section className="flex flex-col gap-16 px-4 py-7 md:flex-row md:px-8">
+        <div className="flex w-full flex-col gap-[18px] md:w-[540px]">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">TENTANG KAMI</span>
-          <h2 className="max-w-[470px] text-[44px] font-medium leading-[1.1] tracking-[-1.6px] text-[#164653]">
+          <h2 className="max-w-full text-[44px] font-medium leading-[1.1] tracking-[-1.6px] text-[#164653] md:max-w-[470px]">
             Satu organisasi.
             <br />
             Semua peran mahasiswa.
           </h2>
-          <p className="max-w-[430px] text-[14px] leading-[1.6] text-[#4a5a60]">
+          <p className="max-w-full text-[14px] leading-[1.6] text-[#4a5a60] md:max-w-[430px]">
             Legislatif & perwakilan mahasiswa FILKOM.
           </p>
-          <div className="flex w-[470px] flex-col">
+          <div className="flex w-full flex-col md:w-[470px]">
             {links.map((l) => (
               <div
                 key={l.label}
@@ -320,7 +320,7 @@ function Home() {
       </section>
 
       {/* Stats */}
-      <section className="flex items-center border-y border-[#c5cdd1] bg-white px-8 py-9">
+      <section className="flex items-center border-y border-[#c5cdd1] bg-white px-4 md:px-8 py-9">
         {[
           { value: '2.400+', label: 'Mahasiswa aktif' },
           { value: '128', label: 'Aspirasi ditangani' },
@@ -342,7 +342,7 @@ function Home() {
       </section>
 
       {/* Team */}
-      <section className="flex flex-col gap-7 px-8 py-8">
+      <section className="flex flex-col gap-7 px-4 md:px-8 py-8">
         <div className="flex items-end justify-between">
           <div className="flex flex-col gap-[14px]">
             <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">STRUKTUR</span>
@@ -375,7 +375,7 @@ function Home() {
       </section>
 
       {/* News */}
-      <section className="flex flex-col px-8 pb-8 pt-0">
+      <section className="flex flex-col px-4 md:px-8 pb-8 pt-0">
         <div className="mb-2 flex items-center justify-between border-b border-[#c5cdd1] pb-2">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">KABAR TERBARU</span>
           <span className="text-[11px] text-[#4a5a60]">Semua berita ↗</span>
@@ -400,7 +400,7 @@ function Home() {
       </section>
 
       {/* CTA - Aduan */}
-      <section className="px-8 pb-8 pt-0">
+      <section className="px-4 md:px-8 pb-8 pt-0">
         <div className="flex flex-col items-center gap-5 rounded-3xl bg-[#164653] px-12 py-[72px] text-center">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#a0b0b6]">
             ADUAN MAHASISWA
