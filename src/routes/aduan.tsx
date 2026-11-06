@@ -48,8 +48,8 @@ function Aduan() {
         </div>
       </section>
 
-      <section className="flex flex-col gap-8 px-8 pb-8 md:flex-row md:items-stretch">
-        <div className="flex-1">
+      <section className="grid grid-cols-1 gap-8 px-8 pb-8 md:grid-cols-2 md:items-stretch">
+        <div className="flex flex-col">
           <div className="mb-4 flex items-center justify-between border-b border-[#c5cdd1] pb-2">
             <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">FORM ADUAN</span>
           </div>
@@ -123,7 +123,7 @@ function Aduan() {
           </div>
         </div>
 
-        <div className="w-full md:w-[420px]">
+        <div className="flex flex-col">
           <div className="mb-4 flex items-center justify-between border-b border-[#c5cdd1] pb-2">
             <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">TIKET ADUAN</span>
           </div>
