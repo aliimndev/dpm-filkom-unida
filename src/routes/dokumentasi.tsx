@@ -13,7 +13,7 @@ function Dokumentasi() {
   return (
     <div className="min-h-screen bg-[#DCE2E6] text-[#1E2B30]">
       <Nav />
-      <section className="px-8 pt-[92px] pb-16">
+      <section className="px-8 pt-[46px] pb-8">
         <div className="mb-4 flex items-center gap-2">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">DOKUMENTASI</span>
         </div>
@@ -25,7 +25,7 @@ function Dokumentasi() {
         </p>
       </section>
 
-      <section className="px-8 pb-16">
+      <section className="px-8 pb-8">
         <div className="mb-2 flex items-center justify-between border-b border-[#c5cdd1] pb-2">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">ARSIP</span>
           <span className="text-[11px] text-[#4a5a60]">Dokumen organisasi</span>

@@ -8,7 +8,7 @@ function About() {
   return (
     <div className="min-h-screen bg-[#DCE2E6] text-[#1E2B30]">
       <Nav />
-      <section className="px-8 pt-[92px] pb-16">
+      <section className="px-8 pt-[46px] pb-8">
         <div className="mb-4 flex items-center gap-2">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">TENTANG</span>
         </div>

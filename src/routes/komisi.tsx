@@ -14,7 +14,7 @@ function Komisi() {
   return (
     <div className="min-h-screen bg-[#DCE2E6] text-[#1E2B30]">
       <Nav />
-      <section className="flex gap-16 px-8 pt-[92px] pb-16">
+      <section className="flex gap-16 px-8 pt-[46px] pb-8">
         <div className="flex w-full flex-col gap-[18px] md:w-[540px]">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">KOMISI</span>
           <h1 className="max-w-[470px] text-[44px] font-medium leading-[1.1] tracking-[-1.6px] text-[#164653]">
@@ -38,7 +38,7 @@ function Komisi() {
         </div>
       </section>
 
-      <section className="px-8 pb-16">
+      <section className="px-8 pb-8">
         <div className="mb-4 flex items-center justify-between border-b border-[#c5cdd1] pb-2">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">DAFTAR KOMISI</span>
           <span className="font-mono text-[10px] tracking-[0.6px] text-[#6b7a80]">03 komisi</span>

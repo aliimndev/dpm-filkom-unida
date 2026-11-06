@@ -35,7 +35,7 @@ function Home() {
       <Nav />
 
       {/* Hero */}
-      <section className="flex flex-col items-center gap-6 px-10 pt-[92px] pb-16">
+      <section className="flex flex-col items-center gap-6 px-10 pt-[46px] pb-8">
         <div className="flex items-center gap-2 rounded-full border border-[#c5cdd1] bg-white px-[12px] py-[6px]">
           <span className="h-[6px] w-[6px] rounded-full bg-[#E78E3F]" />
           <span className="font-mono text-[10px] tracking-[1.1px] text-[#4a5a60]">
@@ -217,7 +217,7 @@ function Home() {
       </section>
 
       {/* About */}
-      <section className="flex gap-16 px-8 py-14">
+      <section className="flex gap-16 px-8 py-7">
         <div className="flex w-[540px] flex-col gap-[18px]">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">TENTANG KAMI</span>
           <h2 className="max-w-[470px] text-[44px] font-medium leading-[1.1] tracking-[-1.6px] text-[#164653]">
@@ -342,7 +342,7 @@ function Home() {
       </section>
 
       {/* Team */}
-      <section className="flex flex-col gap-7 px-8 py-16">
+      <section className="flex flex-col gap-7 px-8 py-8">
         <div className="flex items-end justify-between">
           <div className="flex flex-col gap-[14px]">
             <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">STRUKTUR</span>
@@ -375,7 +375,7 @@ function Home() {
       </section>
 
       {/* News */}
-      <section className="flex flex-col px-8 pb-16 pt-0">
+      <section className="flex flex-col px-8 pb-8 pt-0">
         <div className="mb-2 flex items-center justify-between border-b border-[#c5cdd1] pb-2">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">KABAR TERBARU</span>
           <span className="text-[11px] text-[#4a5a60]">Semua berita ↗</span>
@@ -400,7 +400,7 @@ function Home() {
       </section>
 
       {/* CTA - Aduan */}
-      <section className="px-8 pb-16 pt-0">
+      <section className="px-8 pb-8 pt-0">
         <div className="flex flex-col items-center gap-5 rounded-3xl bg-[#164653] px-12 py-[72px] text-center">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#a0b0b6]">
             ADUAN MAHASISWA
