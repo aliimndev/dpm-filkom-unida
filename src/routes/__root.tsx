@@ -29,7 +29,25 @@ export const Route = createRootRoute({
     ],
   }),
   shellComponent: RootDocument,
+  notFoundComponent: NotFound,
 })
+
+function NotFound() {
+  return (
+    <div className="min-h-screen bg-[#DCE2E6] text-[#1E2B30]">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-6 px-4 text-center">
+        <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">404</span>
+        <h1 className="text-[44px] font-medium tracking-[-1.6px] text-[#164653]">Halaman tidak ditemukan.</h1>
+        <a
+          href="/"
+          className="rounded-full bg-[#2BB3BD] px-[22px] py-[13px] text-[13px] font-medium text-[#164653]"
+        >
+          Kembali ke Beranda
+        </a>
+      </div>
+    </div>
+  )
+}
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
