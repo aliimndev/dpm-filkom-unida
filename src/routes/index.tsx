@@ -60,7 +60,10 @@ function Home() {
   }
   const [visibleMsgs, setVisibleMsgs] = useState(0)
   useEffect(() => {
-    if (visibleMsgs >= aspirasiMsgs.length) return
+    if (visibleMsgs >= aspirasiMsgs.length) {
+      const t = setTimeout(() => setVisibleMsgs(0), 2600)
+      return () => clearTimeout(t)
+    }
     const t = setTimeout(() => setVisibleMsgs((v) => v + 1), 850)
     return () => clearTimeout(t)
   }, [visibleMsgs, aspirasiMsgs.length])
