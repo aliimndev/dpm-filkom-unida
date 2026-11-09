@@ -16,7 +16,7 @@ export default function Nav() {
         <Link to="/" className="flex items-center gap-[10px]">
           <img src="/logo-dpm.webp" alt="DPM FILKOM" className="h-8 w-8 object-contain" />
           <span className="text-[15px] font-semibold tracking-[-0.3px] text-[#164653]">
-            DPM FILKOM
+            DPM FILKOM UNIDA
           </span>
         </Link>
         <div className="hidden items-center gap-[30px] md:flex">

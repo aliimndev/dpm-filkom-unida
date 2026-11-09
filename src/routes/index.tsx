@@ -1,33 +1,33 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Nav from '../components/Nav'
 import SiteFooter from '../components/SiteFooter'
 
 const events = [
-  { date: '12 FEB', name: 'Rapat Pleno Terbuka' },
-  { date: '03 MAR', name: 'Aspirasi Fest 2026' },
-  { date: '21 APR', name: 'Workshop Kepemimpinan' },
-  { date: '09 MEI', name: 'Sidang Terbuka' },
+  { date: '26/27', name: 'Musyawarah Kerja' },
+  { date: '26/27', name: 'Mengawal Organisasi' },
+  { date: '26/27', name: 'Mengkaji Aspirasi' },
+  { date: '26/27', name: 'Musyawarah Besar' },
 ]
 
 const links = [
-  { idx: '01', label: 'Aspirasi & advokasi', meta: '128 tiket' },
+  { idx: '01', label: 'Aspirasi dan advokasi', meta: 'Diperjuangkan' },
   { idx: '02', label: 'Pengawasan anggaran', meta: 'Transparan' },
-  { idx: '03', label: 'Kegiatan mahasiswa', meta: '6 program' },
+  { idx: '03', label: 'Kegiatan mahasiswa', meta: '25 program' },
   { idx: '04', label: 'Publikasi & dokumen', meta: 'Arsip terbuka' },
 ]
 
 const team = [
-  { name: 'Andi Pratama', role: 'KETUA', initial: 'A' },
-  { name: 'Siti Rahma', role: 'WAKIL KETUA', initial: 'S' },
-  { name: 'Budi Santoso', role: 'SEKRETARIS', initial: 'B' },
-  { name: 'Dewi Lestari', role: 'BENDAHARA', initial: 'D' },
+  { name: 'M Maulana Ahdan', role: 'KETUA', photo: '/ahdan.webp' },
+  { name: 'Achmad Suherman', role: 'WAKIL KETUA', photo: '/ahmad.webp' },
+  { name: 'S Raudha Al Zahra', role: 'SEKRETARIS', photo: '/zahra.webp' },
+  { name: 'Anggun Rahmadani', role: 'BENDAHARA', photo: '/anggun.webp' },
 ]
 
 const news = [
-  { date: '12 JAN 2026', title: 'Rapat Pleno Perdana 2026', tag: 'RAPAT' },
-  { date: '03 FEB 2026', title: 'Peluncuran Platform Aspirasi Digital', tag: 'PROGRAM' },
-  { date: '21 MAR 2026', title: 'Workshop Kepemimpinan Mahasiswa', tag: 'KEGIATAN' },
+  { date: '26/27', title: 'Fasilitas Fakultas ', tag: 'ISSUE' },
+  { date: '26/27', title: 'Transparansi Anggaran', tag: 'ISSUE' },
+  { date: '26/27', title: 'Pengalihan Alokasi Dana', tag: 'ISSUE' },
 ]
 
 const CODE_LINES = [
@@ -37,7 +37,7 @@ const CODE_LINES = [
   { text: '200 OK · 128 entri', className: 'text-[#E78E3F]' },
   { text: '', className: 'text-[#d4d4d4]' },
   { text: 'ID · TOPIK · STATUS', className: 'text-[#6b7a80]' },
-  { text: 'A-012 · Beasiswa · selesai', className: 'text-[#d4d4d4]' },
+  { text: 'A-012 · Kebijakan · selesai', className: 'text-[#d4d4d4]' },
   { text: 'A-013 · Fasilitas · diproses', className: 'text-[#d4d4d4]' },
   { text: 'A-014 · Kurikulum · baru', className: 'text-[#d4d4d4]' },
 ]
@@ -49,10 +49,10 @@ const CODE_OFFSETS = CODE_LINES.map((_, i) =>
 function Home() {
   const [aspirasiInput, setAspirasiInput] = useState('')
   const [aspirasiMsgs, setAspirasiMsgs] = useState([
-    { text: 'Kelas tanpa proyektor di GKB 4, mohon ditinjau.', from: 'user' },
-    { text: 'Sudah diteruskan ke bagian akademik.', from: 'dpm' },
-    { text: 'Status: diproses oleh komisi III', from: 'dpm' },
-    { text: 'Terima kasih, ditunggu tindak lanjutnya.', from: 'user' },
+    { text: 'Apakah Aspirasi saya tersampaikan?.', from: 'user' },
+    { text: 'Sudah tersampaikan.', from: 'dpm' },
+    { text: 'Sedang diproses oleh komisi II', from: 'dpm' },
+    { text: 'Terima kasih, ditunggu informasi selanjutnya.', from: 'user' },
   ])
   function sendAspirasi() {
     if (!aspirasiInput.trim()) return
@@ -77,6 +77,33 @@ function Home() {
     const t = setTimeout(() => setCodeN((n) => n + 1), 35)
     return () => clearTimeout(t)
   }, [codeN])
+  const bphRef = useRef<HTMLDivElement>(null)
+  const bphSeg = useRef(0)
+  useEffect(() => {
+    const el = bphRef.current
+    if (!el) return
+    const measure = () => {
+      const n = team.length
+      let w = 0
+      for (let i = 0; i < n; i++) {
+        w += (el.children[i] as HTMLElement).offsetWidth + 16
+      }
+      bphSeg.current = w
+    }
+    measure()
+    const t = setInterval(() => {
+      const card = el.firstElementChild as HTMLElement | null
+      if (!card) return
+      const step = card.offsetWidth + 16
+      el.scrollBy({ left: step, behavior: 'smooth' })
+      setTimeout(() => {
+        if (bphSeg.current && el.scrollLeft >= bphSeg.current) {
+          el.scrollLeft -= bphSeg.current
+        }
+      }, 360)
+    }, 2800)
+    return () => clearInterval(t)
+  }, [])
   const [eventItems, setEventItems] = useState(events)
   useEffect(() => {
     const t = setInterval(() => {
@@ -123,7 +150,7 @@ function Home() {
         <div className="flex items-center gap-[10px]">
           <Link
             to="/aduan"
-            className="flex items-center gap-2 rounded-full bg-[#2BB3BD] px-5 py-3 text-[13px] font-medium text-[#164653]"
+            className="flex items-center gap-2 rounded-full bg-[#E78E3F] px-5 py-3 text-[13px] font-medium text-[#164653]"
           >
             Sampaikan Aspirasi
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -144,9 +171,9 @@ function Home() {
             06 inisiatif aktif
           </span>
         </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="space-y-4 md:grid md:grid-cols-6 md:gap-4 md:space-y-0">
           {/* Card Aspirasi */}
-          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white">
+          <div className="sticky top-[16px] z-[1] flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white md:static md:col-span-3 lg:col-span-2">
             <div className="flex flex-1 flex-col justify-between gap-2 p-[18px]">
               <div className="flex flex-col gap-2">
                 {aspirasiMsgs.slice(0, visibleMsgs).map((m, i) => {
@@ -202,7 +229,7 @@ function Home() {
           </div>
 
           {/* Card Sistem */}
-          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#164653] bg-[#164653]">
+          <div className="sticky top-[28px] z-[2] flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#164653] bg-[#164653] md:static md:col-span-3 lg:col-span-2">
             <div className="flex flex-1 flex-col justify-between gap-2 p-[18px]">
               <div className="flex flex-col font-mono text-[10.5px] leading-[1.65]">
                 {CODE_LINES.map((line, i) => {
@@ -229,7 +256,7 @@ function Home() {
           </div>
 
           {/* Card Kegiatan */}
-          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white">
+          <div className="sticky top-[40px] z-[3] flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white md:static md:col-span-3 lg:col-span-2">
             <div className="relative flex-1 overflow-hidden p-[18px]">
               <div className="relative h-full">
                 {eventItems.map((e, slot) => (
@@ -258,11 +285,9 @@ function Home() {
               </svg>
             </div>
           </div>
-        </div>
 
-        <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
           {/* Card Galeri */}
-          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white">
+          <div className="sticky top-[52px] z-[4] flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white md:static md:col-span-3">
             <div className="flex flex-1 overflow-hidden">
               <div className="flex flex-1 flex-col gap-[2px]">
                 <div className="flex flex-1 gap-[2px]">
@@ -299,17 +324,17 @@ function Home() {
           </div>
 
           {/* Card Dies Natalis */}
-          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#164653] bg-[#164653]">
+          <div className="sticky top-[64px] z-[5] flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#164653] bg-[#164653] md:static md:col-span-3">
             <div className="flex flex-1 items-center justify-center overflow-hidden">
               <img
-                src="/cctv.webp"
-                alt="CCTV"
+                src="/anuan.webp"
+                alt="FILKOM"
                 className="h-full w-full object-cover"
               />
             </div>
             <div className="flex items-center justify-between border-t border-[#164653] px-[18px] py-[13px]">
               <span className="font-mono text-[10px] tracking-[1.1px] text-[#a0b0b6]">
-                DIES NATALIS
+                FILKOM
               </span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2">
                 <path d="M7 17L17 7M17 7H7M17 7V17" />
@@ -324,12 +349,12 @@ function Home() {
         <div className="flex w-full flex-col gap-[18px] md:w-[540px]">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">TENTANG KAMI</span>
           <h2 className="max-w-full text-[32px] font-medium leading-[1.1] tracking-[-1.2px] text-[#164653] md:text-[44px] md:tracking-[-1.6px] md:max-w-[470px]">
-            Satu organisasi.
+            Ruang Aspirasi
             <br />
-            Semua peran mahasiswa.
+            Mahasiswa.
           </h2>
           <p className="max-w-full text-[14px] leading-[1.6] text-[#4a5a60] md:max-w-[430px]">
-            Legislatif & perwakilan mahasiswa FILKOM.
+            DPM FILKOM UNIDA.
           </p>
           <div className="flex w-full flex-col md:w-[470px]">
             {links.map((l) => (
@@ -359,7 +384,7 @@ function Home() {
             {[
               'aspirasi.submit({',
               '  topik: "Fasilitas",',
-              '  ruang: "GKB 4",',
+              '  ruang: "Smart Class 4",',
               '  urgensi: "tinggi",',
               '})',
               '',
@@ -391,7 +416,7 @@ function Home() {
               <span className="font-mono text-[9px] tracking-[0.8px] text-[#E78E3F]">DIPROSES</span>
             </div>
             <h3 className="mb-3 text-[15px] font-medium text-[#164653]">
-              Fasilitas ruang kelas GKB 4
+              Fasilitas ruang kelas SC 4
             </h3>
             <div className="mb-3 flex flex-wrap items-center gap-[6px]">
               {['Diterima', 'Diverifikasi', 'Komisi III', 'Selesai'].map((s, i) => (
@@ -425,10 +450,10 @@ function Home() {
       {/* Stats */}
       <section className="reveal flex items-center border-y border-[#c5cdd1] bg-white px-4 md:px-8 py-9">
         {[
-          { value: '2.400+', label: 'Mahasiswa aktif' },
-          { value: '128', label: 'Aspirasi ditangani' },
-          { value: '48', label: 'Kegiatan per tahun' },
-          { value: '99%', label: 'Tindak lanjut' },
+          { value: '200+', label: 'Mahasiswa aktif' },
+          { value: '3', label: 'Aspirasi ditangani' },
+          { value: '10', label: 'Kegiatan per tahun' },
+          { value: '80%', label: 'Tindak lanjut' },
         ].map((s, i) => (
           <div key={s.label} className="flex items-center">
             {i > 0 && <div className="mx-7 h-11 w-px bg-[#c5cdd1]" />}
@@ -450,23 +475,46 @@ function Home() {
           <div className="flex flex-col gap-[14px]">
             <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">STRUKTUR</span>
             <h2 className="max-w-[620px] text-[32px] font-medium leading-[1.12] tracking-[-1.2px] text-[#164653] md:text-[44px] md:tracking-[-1.6px]">
-              Orang-orang di balik meja.
+              Badan Pengurus Harian.
             </h2>
           </div>
           <div className="flex items-center gap-[6px] pb-1">
-            <span className="font-mono text-[10px] tracking-[0.9px] text-[#6b7a80]">PERIODE 2025/2026</span>
+            <span className="font-mono text-[10px] tracking-[0.9px] text-[#6b7a80]">PERIODE 2026/2027</span>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6b7a80" strokeWidth="2">
               <path d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        {/* Mobile carousel: seamless marquee, centered */}
+        <div
+          ref={bphRef}
+          className="md:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-[14vw] scrollbar-hide"
+        >
+          {[...team, ...team].map((m, i) => (
+            <div key={i} className="snap-center shrink-0 w-[72vw] flex flex-col gap-[10px]">
+              <div className="overflow-hidden rounded-xl border border-[#c5cdd1] bg-[#DCE2E6]">
+                <img
+                  src={m.photo}
+                  alt={m.name}
+                  className="block h-auto w-full"
+                />
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-[14px] text-[#164653]">{m.name}</span>
+                <span className="font-mono text-[9px] tracking-[0.9px] text-[#6b7a80]">{m.role}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="hidden md:grid md:grid-cols-4 gap-4">
           {team.map((m) => (
             <div key={m.name} className="flex flex-col gap-[10px]">
-              <div className="flex h-[230px] items-end rounded-xl border border-[#c5cdd1] bg-[#DCE2E6] p-4">
-                <span className="text-[72px] font-medium leading-none tracking-[-3px] text-[#8fa6ad]">
-                  {m.initial}
-                </span>
+              <div className="overflow-hidden rounded-xl border border-[#c5cdd1] bg-[#DCE2E6]">
+                <img
+                  src={m.photo}
+                  alt={m.name}
+                  className="block h-auto w-full"
+                />
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-[14px] text-[#164653]">{m.name}</span>
@@ -509,11 +557,10 @@ function Home() {
             ADUAN MAHASISWA
           </span>
           <h2 className="max-w-[760px] text-[32px] font-medium leading-[1.1] tracking-[-1.2px] text-white md:text-[52px] md:tracking-[-1.8px]">
-            Sampaikan aspirasi dan aduan Anda.
+            Sampaikan aspirasi Anda.
           </h2>
           <p className="max-w-[560px] text-[14px] leading-[1.6] text-[#a0b0b6]">
-            DPM FILKOM UNIDA menampung aspirasi, aduan, dan masukan mahasiswa
-            melalui surat aduan resmi.
+           Dewan Perwakilan Mahasiswa Fakultas Ilmu Komputer Universitas Djuanda
           </p>
           <a
             href="/aduan"
