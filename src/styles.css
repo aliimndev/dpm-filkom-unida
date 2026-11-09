@@ -59,10 +59,12 @@ img { display: block; max-width: 100%; }
   animation: bubble-in 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-@keyframes events-bounce {
-  0%, 12% { transform: translateY(0); }
-  88%, 100% { transform: translateY(calc(-50% - 4px)); }
+.stack-card {
+  transition: bottom 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 420ms ease;
+  animation: stack-in 420ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-.events-bounce {
-  animation: events-bounce 8s ease-in-out infinite alternate;
+@keyframes stack-in {
+  from { opacity: 0; transform: translateY(-14px) scale(0.96); }
 }
