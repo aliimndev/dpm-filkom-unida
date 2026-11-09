@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import Nav from '../components/Nav'
 import SiteFooter from '../components/SiteFooter'
 
@@ -74,21 +74,11 @@ function Home() {
     return () => clearTimeout(t)
   }, [codeN])
   const [eventItems, setEventItems] = useState(events)
-  const eventItemsRef = useRef(events)
-  const [blurName, setBlurName] = useState<string | null>(null)
   useEffect(() => {
-    let timers: ReturnType<typeof setTimeout>[] = []
     const t = setInterval(() => {
-      const top = eventItemsRef.current[0]
-      setBlurName(top.name)
-      eventItemsRef.current = [...eventItemsRef.current.slice(1), top]
-      setEventItems(eventItemsRef.current)
-      timers.push(setTimeout(() => setBlurName(null), 700))
+      setEventItems((items) => [...items.slice(1), items[0]])
     }, 2600)
-    return () => {
-      clearInterval(t)
-      timers.forEach(clearTimeout)
-    }
+    return () => clearInterval(t)
   }, [])
   useEffect(() => {
     const els = document.querySelectorAll('.reveal')
@@ -236,10 +226,9 @@ function Home() {
                     className="absolute left-0 right-0 flex h-[58px] items-center gap-[10px] rounded-[9px] border border-[#c5cdd1] bg-[#DCE2E6] px-[10px] will-change-[top] hover:border-[#2BB3BD] hover:bg-white"
                     style={{
                       top: slot * 66,
-                      zIndex: blurName === e.name ? events.length + 1 : events.length - slot,
-                      filter: blurName === e.name ? 'blur(3px)' : 'blur(0px)',
+                      zIndex: events.length - slot,
                       transition:
-                        'top 700ms cubic-bezier(0.4, 0, 0.2, 1), filter 350ms ease, border-color 150ms, background-color 150ms',
+                        'top 700ms cubic-bezier(0.4, 0, 0.2, 1), border-color 150ms, background-color 150ms',
                     }}
                   >
                     <span className="font-mono text-[9.5px] tracking-[0.8px] text-[#6b7a80]">
