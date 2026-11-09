@@ -105,8 +105,13 @@ function Home() {
             PARLEMEN AKSARA 2026/2027.
           </span>
         </div>
-        <h1 className="hero-title max-w-[860px] text-center text-[40px] font-medium leading-[1.04] tracking-[-1.6px] md:text-[68px] md:tracking-[-2.6px] text-[#164653]">
-          Merangkai Aspirasi Mengawal Demokrasi
+        <h1 className="max-w-[860px] text-center text-[40px] font-medium leading-[1.04] tracking-[-1.6px] md:text-[68px] md:tracking-[-2.6px] text-[#164653]">
+          <span className="hero-line block">
+            <span className="hero-line-inner block">Merangkai Aspirasi</span>
+          </span>
+          <span className="hero-line block">
+            <span className="hero-line-inner hero-line-delay block">Mengawal Demokrasi</span>
+          </span>
         </h1>
         <p className="hero-sub max-w-[600px] text-center text-[15px] leading-[1.55] text-[#4a5a60] md:text-[16px]">
           Dewan Perwakilan Mahasiswa Fakultas Ilmu Komputer Universitas Djuanda
