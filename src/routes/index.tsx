@@ -270,14 +270,14 @@ function Home() {
                     className="flex-1 bg-cover bg-center transition-transform duration-500 hover:scale-105"
                     style={{
                       backgroundImage:
-                        'url(https://images.unsplash.com/photo-1562852293-c2dec232e381?w=1080)',
+                        'url(/komisi-1.webp)',
                     }}
                   />
                   <div
                     className="flex-1 bg-cover bg-center transition-transform duration-500 hover:scale-105"
                     style={{
                       backgroundImage:
-                        'url(https://images.unsplash.com/photo-1781690643349-011c1fc2a6cf?w=1080)',
+                        'url(/komisi-2.webp)',
                     }}
                   />
                 </div>
@@ -286,7 +286,7 @@ function Home() {
                 className="w-[33%] bg-cover bg-center transition-transform duration-500 hover:scale-105"
                 style={{
                   backgroundImage:
-                    'url(https://images.unsplash.com/photo-1758270703824-a6565c6a33a8?w=1080)',
+                    'url(/komisi-3.webp)',
                 }}
               />
             </div>
