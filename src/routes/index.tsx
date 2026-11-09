@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Nav from '../components/Nav'
 import SiteFooter from '../components/SiteFooter'
 
@@ -42,12 +42,25 @@ function Home() {
     setAspirasiMsgs((m) => [...m, aspirasiInput.trim()])
     setAspirasiInput('')
   }
+  useEffect(() => {
+    const els = document.querySelectorAll('.reveal')
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view')
+          io.unobserve(e.target)
+        }
+      })
+    }, { threshold: 0.15 })
+    els.forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [])
   return (
     <div className="min-h-screen bg-[#DCE2E6] text-[#1E2B30]">
       <Nav />
 
       {/* Hero */}
-      <section className="flex flex-col items-center gap-6 px-4 pt-[46px] pb-8 md:px-10">
+      <section className="reveal flex flex-col items-center gap-6 px-4 pt-[46px] pb-8 md:px-10">
         <div className="flex items-center gap-2 rounded-full border border-[#c5cdd1] bg-white px-[12px] py-[6px]">
           <span className="h-[6px] w-[6px] rounded-full bg-[#E78E3F]" />
           <span className="font-mono text-[10px] tracking-[1.1px] text-[#4a5a60]">
@@ -72,7 +85,7 @@ function Home() {
       </section>
 
       {/* Program Grid */}
-      <section className="px-4 md:px-8 pb-14 pt-0">
+      <section className="reveal px-4 md:px-8 pb-14 pt-0">
         <div className="mb-4 flex items-center justify-between border-b border-[#c5cdd1] pb-2">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">
             PROGRAM &amp; LAYANAN
@@ -235,7 +248,7 @@ function Home() {
       </section>
 
       {/* About */}
-      <section className="flex flex-col gap-16 px-4 py-7 md:flex-row md:px-8">
+      <section className="reveal flex flex-col gap-16 px-4 py-7 md:flex-row md:px-8">
         <div className="flex w-full flex-col gap-[18px] md:w-[540px]">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">TENTANG KAMI</span>
           <h2 className="max-w-full text-[32px] font-medium leading-[1.1] tracking-[-1.2px] text-[#164653] md:text-[44px] md:tracking-[-1.6px] md:max-w-[470px]">
@@ -338,7 +351,7 @@ function Home() {
       </section>
 
       {/* Stats */}
-      <section className="flex items-center border-y border-[#c5cdd1] bg-white px-4 md:px-8 py-9">
+      <section className="reveal flex items-center border-y border-[#c5cdd1] bg-white px-4 md:px-8 py-9">
         {[
           { value: '2.400+', label: 'Mahasiswa aktif' },
           { value: '128', label: 'Aspirasi ditangani' },
@@ -360,7 +373,7 @@ function Home() {
       </section>
 
       {/* Team */}
-      <section className="flex flex-col gap-7 px-4 md:px-8 py-8">
+      <section className="reveal flex flex-col gap-7 px-4 md:px-8 py-8">
         <div className="flex items-end justify-between">
           <div className="flex flex-col gap-[14px]">
             <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">STRUKTUR</span>
@@ -393,7 +406,7 @@ function Home() {
       </section>
 
       {/* News */}
-      <section className="flex flex-col px-4 md:px-8 pb-8 pt-0">
+      <section className="reveal flex flex-col px-4 md:px-8 pb-8 pt-0">
         <div className="mb-2 flex items-center justify-between border-b border-[#c5cdd1] pb-2">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#4a5a60]">KABAR TERBARU</span>
           <span className="text-[11px] text-[#4a5a60]">Semua berita ↗</span>
@@ -418,7 +431,7 @@ function Home() {
       </section>
 
       {/* CTA - Aduan */}
-      <section className="px-4 md:px-8 pb-8 pt-0">
+      <section className="reveal px-4 md:px-8 pb-8 pt-0">
         <div className="flex flex-col items-center gap-5 rounded-3xl bg-[#164653] px-12 py-[72px] text-center">
           <span className="font-mono text-[10px] tracking-[1.2px] text-[#a0b0b6]">
             ADUAN MAHASISWA
