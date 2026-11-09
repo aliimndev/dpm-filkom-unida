@@ -136,6 +136,7 @@ function Home() {
                 <span className="text-[#d4d4d4]">A-012 · Beasiswa · selesai</span>
                 <span className="text-[#d4d4d4]">A-013 · Fasilitas · diproses</span>
                 <span className="text-[#d4d4d4]">A-014 · Kurikulum · baru</span>
+                <span className="animate-pulse text-[#ff6208]">▌</span>
               </div>
             </div>
             <div className="flex items-center justify-between border-t border-[#164653] px-[18px] py-[13px]">
@@ -153,7 +154,7 @@ function Home() {
                 {events.map((e) => (
                   <div
                     key={e.name}
-                    className="flex items-center gap-[10px] rounded-[9px] border border-[#c5cdd1] bg-[#DCE2E6] px-[10px] py-[9px]"
+                    className="flex items-center gap-[10px] rounded-[9px] border border-[#c5cdd1] bg-[#DCE2E6] px-[10px] py-[9px] transition hover:border-[#2BB3BD] hover:bg-white"
                   >
                     <span className="font-mono text-[9.5px] tracking-[0.8px] text-[#6b7a80]">
                       {e.date}
