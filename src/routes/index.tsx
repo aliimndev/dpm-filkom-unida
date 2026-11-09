@@ -134,7 +134,7 @@ function Home() {
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {/* Card Aspirasi */}
-          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white transition hover:-translate-y-1 hover:shadow-lg">
+          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white">
             <div className="flex flex-1 flex-col justify-between gap-2 p-[18px]">
               <div className="flex flex-col gap-2">
                 {aspirasiMsgs.slice(0, visibleMsgs).map((m, i) => {
@@ -190,7 +190,7 @@ function Home() {
           </div>
 
           {/* Card Sistem */}
-          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#164653] bg-[#164653] transition hover:-translate-y-1 hover:shadow-lg">
+          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#164653] bg-[#164653]">
             <div className="flex flex-1 flex-col justify-between gap-2 p-[18px]">
               <div className="flex flex-col font-mono text-[10.5px] leading-[1.65]">
                 {CODE_LINES.map((line, i) => {
@@ -217,7 +217,7 @@ function Home() {
           </div>
 
           {/* Card Kegiatan */}
-          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white transition hover:-translate-y-1 hover:shadow-lg">
+          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white">
             <div className="relative flex-1 overflow-hidden p-[18px]">
               <div className="relative h-full">
                 {eventItems.map((e, slot) => (
@@ -250,7 +250,7 @@ function Home() {
 
         <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
           {/* Card Galeri */}
-          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white transition hover:-translate-y-1 hover:shadow-lg">
+          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white">
             <div className="flex flex-1 overflow-hidden">
               <div className="flex flex-1 flex-col gap-[2px]">
                 <div className="flex flex-1 gap-[2px]">
@@ -287,7 +287,7 @@ function Home() {
           </div>
 
           {/* Card Dies Natalis */}
-          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#164653] bg-[#164653] transition hover:-translate-y-1 hover:shadow-lg">
+          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#164653] bg-[#164653]">
             <div className="flex flex-1 items-center justify-center overflow-hidden">
               <div
                 className="h-[260px] w-[260px] rounded-full animate-pulse"
