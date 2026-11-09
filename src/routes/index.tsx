@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { useState, useEffect } from 'react'
 import Nav from '../components/Nav'
 import SiteFooter from '../components/SiteFooter'
@@ -121,12 +121,15 @@ function Home() {
           Dewan Perwakilan Mahasiswa Fakultas Ilmu Komputer Universitas Djuanda
         </p>
         <div className="flex items-center gap-[10px]">
-          <button className="flex items-center gap-2 rounded-full bg-[#2BB3BD] px-5 py-3 text-[13px] font-medium text-[#164653]">
+          <Link
+            to="/aduan"
+            className="flex items-center gap-2 rounded-full bg-[#2BB3BD] px-5 py-3 text-[13px] font-medium text-[#164653]"
+          >
             Sampaikan Aspirasi
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>
-          </button>
+          </Link>
         
         </div>
       </section>
