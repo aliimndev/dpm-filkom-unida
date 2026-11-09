@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { useState } from 'react'
 import Nav from '../components/Nav'
 import SiteFooter from '../components/SiteFooter'
 
@@ -30,6 +31,17 @@ const news = [
 ]
 
 function Home() {
+  const [aspirasiInput, setAspirasiInput] = useState('')
+  const [aspirasiMsgs, setAspirasiMsgs] = useState([
+    'Kelas tanpa proyektor di GKB 4, mohon ditinjau.',
+    'Sudah diteruskan ke bagian akademik.',
+    'Status: diproses oleh komisi III',
+  ])
+  function sendAspirasi() {
+    if (!aspirasiInput.trim()) return
+    setAspirasiMsgs((m) => [...m, aspirasiInput.trim()])
+    setAspirasiInput('')
+  }
   return (
     <div className="min-h-screen bg-[#DCE2E6] text-[#1E2B30]">
       <Nav />
@@ -39,26 +51,23 @@ function Home() {
         <div className="flex items-center gap-2 rounded-full border border-[#c5cdd1] bg-white px-[12px] py-[6px]">
           <span className="h-[6px] w-[6px] rounded-full bg-[#E78E3F]" />
           <span className="font-mono text-[10px] tracking-[1.1px] text-[#4a5a60]">
-            PERIODE 2025/2026 · FILKOM UNIDA
+            PARLEMEN AKSARA 2026/2027.
           </span>
         </div>
         <h1 className="max-w-[860px] text-center text-[40px] font-medium leading-[1.04] tracking-[-1.6px] md:text-[68px] md:tracking-[-2.6px] text-[#164653]">
-          Suara mahasiswa, dijalankan jadi aksi nyata.
+          Merangkai Aspirasi Mengawal Demokrasi
         </h1>
         <p className="max-w-[600px] text-center text-[15px] leading-[1.55] text-[#4a5a60] md:text-[16px]">
-          DPM FILKOM UNIDA menyalurkan aspirasi, mengawal kebijakan, dan membangun
-          ruang kolaborasi untuk seluruh mahasiswa Fakultas Ilmu Komputer.
+         Dewan Perwakilan Mahasiswa Fakultas Ilmu Komputer Universitas Djuanda
         </p>
         <div className="flex items-center gap-[10px]">
           <button className="flex items-center gap-2 rounded-full bg-[#2BB3BD] px-5 py-3 text-[13px] font-medium text-[#164653]">
-            Jelajahi Program
+            Sampaikan Aspirasi
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>
           </button>
-          <button className="flex items-center gap-2 rounded-full border border-[#c5cdd1] bg-white px-5 py-3 text-[13px] text-[#164653]">
-            Sampaikan Aspirasi
-          </button>
+        
         </div>
       </section>
 
@@ -74,14 +83,10 @@ function Home() {
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {/* Card Aspirasi */}
-          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white">
+          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white transition hover:-translate-y-1 hover:shadow-lg">
             <div className="flex flex-1 flex-col justify-between gap-2 p-[18px]">
-              <div className="flex flex-col gap-2">
-                {[
-                  'Kelas tanpa proyektor di GKB 4, mohon ditinjau.',
-                  'Sudah diteruskan ke bagian akademik.',
-                  'Status: diproses oleh komisi III',
-                ].map((t, i) => (
+              <div className="flex flex-col gap-2 overflow-y-auto" style={{ maxHeight: 180 }}>
+                {aspirasiMsgs.map((t, i) => (
                   <div
                     key={i}
                     className="rounded-xl border border-[#c5cdd1] bg-[#DCE2E6] px-3 py-[9px]"
@@ -93,9 +98,21 @@ function Home() {
                   </div>
                 ))}
               </div>
-              <div className="flex items-center justify-between rounded-[10px] border border-[#c5cdd1] bg-[#DCE2E6] px-3 py-[9px]">
-                <span className="font-mono text-[10.5px] text-[#6b7a80]">Tulis aspirasi…</span>
-                <span className="h-[22px] w-[22px] rounded-full bg-[#2BB3BD]" />
+              <div className="flex items-center gap-2 rounded-[10px] border border-[#c5cdd1] bg-[#DCE2E6] px-3 py-[9px]">
+                <input
+                  value={aspirasiInput}
+                  onChange={(e) => setAspirasiInput(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === 'Enter') sendAspirasi() }}
+                  placeholder="Tulis aspirasi…"
+                  className="flex-1 bg-transparent font-mono text-[10.5px] text-[#4a5a60] outline-none placeholder:text-[#6b7a80]"
+                />
+                <button
+                  type="button"
+                  onClick={sendAspirasi}
+                  className="h-[22px] w-[22px] rounded-full bg-[#2BB3BD] text-[10px] font-bold text-[#164653]"
+                >
+                  ↑
+                </button>
               </div>
             </div>
             <div className="flex items-center justify-between border-t border-[#c5cdd1] px-[18px] py-[13px]">
@@ -107,7 +124,7 @@ function Home() {
           </div>
 
           {/* Card Sistem */}
-          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#164653] bg-[#164653]">
+          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#164653] bg-[#164653] transition hover:-translate-y-1 hover:shadow-lg">
             <div className="flex flex-1 flex-col justify-between gap-2 p-[18px]">
               <div className="flex flex-col font-mono text-[10.5px] leading-[1.65]">
                 <span className="text-[#a0b0b6]">$ dpm aspirasi --list</span>
@@ -130,7 +147,7 @@ function Home() {
           </div>
 
           {/* Card Kegiatan */}
-          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white">
+          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white transition hover:-translate-y-1 hover:shadow-lg">
             <div className="flex flex-1 flex-col justify-between gap-2 p-[18px]">
               <div className="flex flex-col gap-2">
                 {events.map((e) => (
@@ -157,19 +174,19 @@ function Home() {
 
         <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
           {/* Card Galeri */}
-          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white">
+          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white transition hover:-translate-y-1 hover:shadow-lg">
             <div className="flex flex-1 overflow-hidden">
               <div className="flex flex-1 flex-col gap-[2px]">
                 <div className="flex flex-1 gap-[2px]">
                   <div
-                    className="flex-1 bg-cover bg-center"
+                    className="flex-1 bg-cover bg-center transition-transform duration-500 hover:scale-105"
                     style={{
                       backgroundImage:
                         'url(https://images.unsplash.com/photo-1562852293-c2dec232e381?w=1080)',
                     }}
                   />
                   <div
-                    className="flex-1 bg-cover bg-center"
+                    className="flex-1 bg-cover bg-center transition-transform duration-500 hover:scale-105"
                     style={{
                       backgroundImage:
                         'url(https://images.unsplash.com/photo-1781690643349-011c1fc2a6cf?w=1080)',
@@ -178,7 +195,7 @@ function Home() {
                 </div>
               </div>
               <div
-                className="w-[33%] bg-cover bg-center"
+                className="w-[33%] bg-cover bg-center transition-transform duration-500 hover:scale-105"
                 style={{
                   backgroundImage:
                     'url(https://images.unsplash.com/photo-1758270703824-a6565c6a33a8?w=1080)',
@@ -194,10 +211,10 @@ function Home() {
           </div>
 
           {/* Card Dies Natalis */}
-          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#164653] bg-[#164653]">
+          <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#164653] bg-[#164653] transition hover:-translate-y-1 hover:shadow-lg">
             <div className="flex flex-1 items-center justify-center overflow-hidden">
               <div
-                className="h-[260px] w-[260px] rounded-full"
+                className="h-[260px] w-[260px] rounded-full animate-pulse"
                 style={{
                   background:
                     'radial-gradient(circle, #E78E3F 0%, #b86a2a 55%, #164653 100%)',
