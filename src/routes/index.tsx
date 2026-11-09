@@ -52,6 +52,7 @@ function Home() {
     { text: 'Kelas tanpa proyektor di GKB 4, mohon ditinjau.', from: 'user' },
     { text: 'Sudah diteruskan ke bagian akademik.', from: 'dpm' },
     { text: 'Status: diproses oleh komisi III', from: 'dpm' },
+    { text: 'Terima kasih, ditunggu tindak lanjutnya.', from: 'user' },
   ])
   function sendAspirasi() {
     if (!aspirasiInput.trim()) return
