@@ -17,3 +17,6 @@ todos.json
 *.jpeg
 *.jpg
 *.png
+
+!public/favicon.png
+!public/apple-touch-icon.png

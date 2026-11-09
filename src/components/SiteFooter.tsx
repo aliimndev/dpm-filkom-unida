@@ -9,9 +9,9 @@ export default function SiteFooter() {
       <div className="flex flex-col items-start justify-between gap-8 md:flex-row">
         <div className="flex w-full flex-col gap-3 md:w-[360px]">
           <div className="flex items-center gap-[10px]">
-            <img src="/logo-dpm.webp" alt="DPM FILKOM" className="h-8 w-8 object-contain brightness-0 invert" />
+            <img src="/logo-dpm.webp" alt="DPM FILKOM" className="h-8 w-8 object-contain" />
             <span className="text-[15px] font-semibold tracking-[-0.3px] text-white">
-              DPM FILKOM
+              DPM FILKOM UNIDA
             </span>
           </div>
           <p className="m-0 max-w-[320px] text-[13px] leading-[1.6] text-[#a0b0b6]">
