@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Nav from '../components/Nav'
 import SiteFooter from '../components/SiteFooter'
 
@@ -58,6 +58,17 @@ function Home() {
     setAspirasiMsgs((m) => [...m, aspirasiInput.trim()])
     setAspirasiInput('')
   }
+  const [visibleMsgs, setVisibleMsgs] = useState(0)
+  const chatRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (visibleMsgs >= aspirasiMsgs.length) return
+    const t = setTimeout(() => setVisibleMsgs((v) => v + 1), 850)
+    return () => clearTimeout(t)
+  }, [visibleMsgs, aspirasiMsgs.length])
+  useEffect(() => {
+    const el = chatRef.current
+    if (el) el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' })
+  }, [visibleMsgs])
   const [codeN, setCodeN] = useState(0)
   useEffect(() => {
     if (codeN >= CODE_TOTAL) {
@@ -123,11 +134,11 @@ function Home() {
           {/* Card Aspirasi */}
           <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white transition hover:-translate-y-1 hover:shadow-lg">
             <div className="flex flex-1 flex-col justify-between gap-2 p-[18px]">
-              <div className="flex flex-col gap-2 overflow-y-auto" style={{ maxHeight: 180 }}>
-                {aspirasiMsgs.map((t, i) => (
+              <div ref={chatRef} className="flex flex-col gap-2 overflow-y-auto" style={{ maxHeight: 180 }}>
+                {aspirasiMsgs.slice(0, visibleMsgs).map((t, i) => (
                   <div
                     key={i}
-                    className="rounded-xl border border-[#c5cdd1] bg-[#DCE2E6] px-3 py-[9px]"
+                    className="bubble-in rounded-xl border border-[#c5cdd1] bg-[#DCE2E6] px-3 py-[9px]"
                     style={{ borderRadius: '12px 12px 12px 4px' }}
                   >
                     <p className="m-0 font-mono text-[10.5px] leading-[1.4] text-[#4a5a60]">
