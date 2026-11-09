@@ -30,6 +30,22 @@ const news = [
   { date: '21 MAR 2026', title: 'Workshop Kepemimpinan Mahasiswa', tag: 'KEGIATAN' },
 ]
 
+const CODE_LINES = [
+  { text: '$ dpm aspirasi --list', className: 'text-[#a0b0b6]' },
+  { text: '', className: 'text-[#d4d4d4]' },
+  { text: 'GET /api/v1/aspirasi', className: 'text-[#f0f0f0]' },
+  { text: '200 OK · 128 entri', className: 'text-[#E78E3F]' },
+  { text: '', className: 'text-[#d4d4d4]' },
+  { text: 'ID · TOPIK · STATUS', className: 'text-[#6b7a80]' },
+  { text: 'A-012 · Beasiswa · selesai', className: 'text-[#d4d4d4]' },
+  { text: 'A-013 · Fasilitas · diproses', className: 'text-[#d4d4d4]' },
+  { text: 'A-014 · Kurikulum · baru', className: 'text-[#d4d4d4]' },
+]
+const CODE_TOTAL = CODE_LINES.reduce((a, l) => a + l.text.length, 0)
+const CODE_OFFSETS = CODE_LINES.map((_, i) =>
+  CODE_LINES.slice(0, i).reduce((a, l) => a + l.text.length, 0),
+)
+
 function Home() {
   const [aspirasiInput, setAspirasiInput] = useState('')
   const [aspirasiMsgs, setAspirasiMsgs] = useState([
@@ -42,6 +58,15 @@ function Home() {
     setAspirasiMsgs((m) => [...m, aspirasiInput.trim()])
     setAspirasiInput('')
   }
+  const [codeN, setCodeN] = useState(0)
+  useEffect(() => {
+    if (codeN >= CODE_TOTAL) {
+      const t = setTimeout(() => setCodeN(0), 2200)
+      return () => clearTimeout(t)
+    }
+    const t = setTimeout(() => setCodeN((n) => n + 1), 35)
+    return () => clearTimeout(t)
+  }, [codeN])
   useEffect(() => {
     const els = document.querySelectorAll('.reveal')
     const io = new IntersectionObserver((entries) => {
@@ -140,16 +165,19 @@ function Home() {
           <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#164653] bg-[#164653] transition hover:-translate-y-1 hover:shadow-lg">
             <div className="flex flex-1 flex-col justify-between gap-2 p-[18px]">
               <div className="flex flex-col font-mono text-[10.5px] leading-[1.65]">
-                <span className="text-[#a0b0b6]">$ dpm aspirasi --list</span>
-                <span className="text-[#d4d4d4]">&nbsp;</span>
-                <span className="text-[#f0f0f0]">GET /api/v1/aspirasi</span>
-                <span className="text-[#E78E3F]">200 OK · 128 entri</span>
-                <span className="text-[#d4d4d4]">&nbsp;</span>
-                <span className="text-[#6b7a80]">ID · TOPIK · STATUS</span>
-                <span className="text-[#d4d4d4]">A-012 · Beasiswa · selesai</span>
-                <span className="text-[#d4d4d4]">A-013 · Fasilitas · diproses</span>
-                <span className="text-[#d4d4d4]">A-014 · Kurikulum · baru</span>
-                <span className="animate-pulse text-[#ff6208]">▌</span>
+                {CODE_LINES.map((line, i) => {
+                  const start = CODE_OFFSETS[i]
+                  if (codeN < start) return null
+                  const visible = line.text.slice(0, Math.min(line.text.length, codeN - start))
+                  const isActive = codeN - start < line.text.length
+                  return (
+                    <span key={i} className={line.className}>
+                      {line.text === '' ? '\u00A0' : visible}
+                      {isActive && <span className="animate-pulse text-[#ff6208]">▌</span>}
+                    </span>
+                  )
+                })}
+                {codeN >= CODE_TOTAL && <span className="animate-pulse text-[#ff6208]">▌</span>}
               </div>
             </div>
             <div className="flex items-center justify-between border-t border-[#164653] px-[18px] py-[13px]">
