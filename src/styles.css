@@ -58,3 +58,21 @@ img { display: block; max-width: 100%; }
 .bubble-in {
   animation: bubble-in 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
+.mask-reveal {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.15em;
+  margin-bottom: -0.15em;
+}
+.mask-reveal-inner {
+  display: block;
+  animation: mask-reveal-up 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.mask-delay {
+  animation-delay: 180ms;
+}
+@keyframes mask-reveal-up {
+  from { transform: translateY(120%); }
+  to { transform: translateY(0); }
+}

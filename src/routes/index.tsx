@@ -106,10 +106,16 @@ function Home() {
           </span>
         </div>
         <h1 className="max-w-[860px] text-center text-[40px] font-medium leading-[1.04] tracking-[-1.6px] md:text-[68px] md:tracking-[-2.6px] text-[#164653]">
-          Merangkai Aspirasi Mengawal Demokrasi
+          <span className="mask-reveal block">
+            <span className="mask-reveal-inner block">Merangkai Aspirasi Mengawal Demokrasi</span>
+          </span>
         </h1>
         <p className="max-w-[600px] text-center text-[15px] leading-[1.55] text-[#4a5a60] md:text-[16px]">
-         Dewan Perwakilan Mahasiswa Fakultas Ilmu Komputer Universitas Djuanda
+          <span className="mask-reveal block">
+            <span className="mask-reveal-inner mask-delay block">
+              Dewan Perwakilan Mahasiswa Fakultas Ilmu Komputer Universitas Djuanda
+            </span>
+          </span>
         </p>
         <div className="flex items-center gap-[10px]">
           <button className="flex items-center gap-2 rounded-full bg-[#2BB3BD] px-5 py-3 text-[13px] font-medium text-[#164653]">
