@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import Nav from '../components/Nav'
 import SiteFooter from '../components/SiteFooter'
 
@@ -73,33 +73,6 @@ function Home() {
     const t = setTimeout(() => setCodeN((n) => n + 1), 35)
     return () => clearTimeout(t)
   }, [codeN])
-  const itemsRef = useRef(events.map((e, i) => ({ id: i, e })))
-  const nextRef = useRef(events.length)
-  const idRef = useRef(events.length)
-  const [stackItems, setStackItems] = useState(itemsRef.current)
-  const [poppingId, setPoppingId] = useState<number | null>(null)
-  useEffect(() => {
-    let timers: ReturnType<typeof setTimeout>[] = []
-    const interval = setInterval(() => {
-      const top = itemsRef.current[itemsRef.current.length - 1]
-      if (!top) return
-      setPoppingId(top.id)
-      timers.push(
-        setTimeout(() => {
-          itemsRef.current = itemsRef.current.filter((x) => x.id !== top.id)
-          const e = events[nextRef.current % events.length]
-          nextRef.current += 1
-          itemsRef.current = [...itemsRef.current, { id: idRef.current++, e }]
-          setStackItems([...itemsRef.current])
-          setPoppingId(null)
-        }, 380),
-      )
-    }, 1700)
-    return () => {
-      clearInterval(interval)
-      timers.forEach(clearTimeout)
-    }
-  }, [])
   useEffect(() => {
     const els = document.querySelectorAll('.reveal')
     const io = new IntersectionObserver((entries) => {
@@ -238,33 +211,19 @@ function Home() {
 
           {/* Card Kegiatan */}
           <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white transition hover:-translate-y-1 hover:shadow-lg">
-            <div className="relative flex-1 overflow-hidden p-[18px]">
-              <div className="relative h-full">
-                {stackItems.map((item, p) => {
-                  const depth = stackItems.length - 1 - p
-                  const isPopping = item.id === poppingId
-                  return (
-                    <div
-                      key={item.id}
-                      className="stack-card absolute left-0 right-0 rounded-[9px] border border-[#c5cdd1] bg-[#DCE2E6] px-[10px] py-[9px]"
-                      style={{
-                        bottom: p * 30,
-                        zIndex: p + 1,
-                        opacity: isPopping ? 0 : 1 - depth * 0.05,
-                        transform: isPopping
-                          ? 'translateY(-26px) scale(1.04)'
-                          : `scale(${1 - depth * 0.02})`,
-                      }}
-                    >
-                      <div className="flex items-center gap-[10px]">
-                        <span className="font-mono text-[9.5px] tracking-[0.8px] text-[#6b7a80]">
-                          {item.e.date}
-                        </span>
-                        <span className="text-[12px] text-[#164653]">{item.e.name}</span>
-                      </div>
-                    </div>
-                  )
-                })}
+            <div className="flex flex-1 flex-col overflow-hidden p-[18px]">
+              <div className="events-bounce flex flex-col gap-2">
+                {[...events, ...events].map((e, i) => (
+                  <div
+                    key={`${e.name}-${i}`}
+                    className="flex shrink-0 items-center gap-[10px] rounded-[9px] border border-[#c5cdd1] bg-[#DCE2E6] px-[10px] py-[9px] transition hover:border-[#2BB3BD] hover:bg-white"
+                  >
+                    <span className="font-mono text-[9.5px] tracking-[0.8px] text-[#6b7a80]">
+                      {e.date}
+                    </span>
+                    <span className="text-[12px] text-[#164653]">{e.name}</span>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="flex items-center justify-between border-t border-[#c5cdd1] px-[18px] py-[13px]">
