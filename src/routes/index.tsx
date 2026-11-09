@@ -211,12 +211,12 @@ function Home() {
 
           {/* Card Kegiatan */}
           <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white transition hover:-translate-y-1 hover:shadow-lg">
-            <div className="flex flex-1 flex-col justify-between gap-2 p-[18px]">
-              <div className="flex flex-col gap-2">
-                {events.map((e) => (
+            <div className="flex flex-1 flex-col overflow-hidden p-[18px]">
+              <div className="events-bounce flex flex-col gap-2">
+                {[...events, ...events].map((e, i) => (
                   <div
-                    key={e.name}
-                    className="flex items-center gap-[10px] rounded-[9px] border border-[#c5cdd1] bg-[#DCE2E6] px-[10px] py-[9px] transition hover:border-[#2BB3BD] hover:bg-white"
+                    key={`${e.name}-${i}`}
+                    className="flex shrink-0 items-center gap-[10px] rounded-[9px] border border-[#c5cdd1] bg-[#DCE2E6] px-[10px] py-[9px] transition hover:border-[#2BB3BD] hover:bg-white"
                   >
                     <span className="font-mono text-[9.5px] tracking-[0.8px] text-[#6b7a80]">
                       {e.date}
