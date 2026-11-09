@@ -59,20 +59,45 @@ img { display: block; max-width: 100%; }
   animation: bubble-in 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.mask-reveal {
-  display: block;
-  overflow: hidden;
-  padding-bottom: 0.15em;
-  margin-bottom: -0.15em;
+.hero-badge {
+  animation: hero-fade-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-.mask-reveal-inner {
-  display: block;
-  animation: mask-reveal-up 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+.hero-title {
+  animation: hero-mask-up 1100ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both;
 }
-.mask-delay {
-  animation-delay: 180ms;
+.hero-sub {
+  animation: hero-sub-in 800ms cubic-bezier(0.22, 1, 0.36, 1) 1200ms both;
 }
-@keyframes mask-reveal-up {
-  from { transform: translateY(120%); }
-  to { transform: translateY(0); }
+@keyframes hero-fade-in {
+  from { opacity: 0; filter: blur(4px); }
+  to { opacity: 1; filter: blur(0); }
+}
+@keyframes hero-mask-up {
+  from {
+    clip-path: inset(100% 0 -0.2em 0);
+    transform: translateY(0.25em);
+    filter: blur(8px);
+    opacity: 0.4;
+  }
+  to {
+    clip-path: inset(0 0 -0.2em 0);
+    transform: translateY(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+@keyframes hero-sub-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-badge,
+  .hero-title,
+  .hero-sub {
+    animation: none;
+    opacity: 1;
+    filter: none;
+    clip-path: none;
+    transform: none;
+  }
 }
