@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, type TransitionEvent } from 'react'
 import Nav from '../components/Nav'
 import SiteFooter from '../components/SiteFooter'
 
@@ -73,6 +73,25 @@ function Home() {
     const t = setTimeout(() => setCodeN((n) => n + 1), 35)
     return () => clearTimeout(t)
   }, [codeN])
+  const [eventOffset, setEventOffset] = useState(0)
+  const [eventSnap, setEventSnap] = useState(false)
+  useEffect(() => {
+    if (eventOffset >= events.length) return
+    const t = setTimeout(() => setEventOffset((o) => o + 1), 2600)
+    return () => clearTimeout(t)
+  }, [eventOffset])
+  useEffect(() => {
+    if (!eventSnap) return
+    const t = setTimeout(() => setEventSnap(false), 50)
+    return () => clearTimeout(t)
+  }, [eventSnap])
+  function handleEventTransitionEnd(e: TransitionEvent<HTMLDivElement>) {
+    if (e.target !== e.currentTarget || e.propertyName !== 'transform') return
+    if (eventOffset >= events.length) {
+      setEventSnap(true)
+      setEventOffset(0)
+    }
+  }
   useEffect(() => {
     const els = document.querySelectorAll('.reveal')
     const io = new IntersectionObserver((entries) => {
@@ -211,12 +230,19 @@ function Home() {
 
           {/* Card Kegiatan */}
           <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#c5cdd1] bg-white transition hover:-translate-y-1 hover:shadow-lg">
-            <div className="flex flex-1 flex-col justify-between gap-2 p-[18px]">
-              <div className="flex flex-col gap-2">
-                {events.map((e) => (
+            <div className="flex flex-1 flex-col overflow-hidden p-[18px]">
+              <div
+                className="flex flex-col gap-2 will-change-transform"
+                style={{
+                  transform: `translateY(-${eventOffset * 66}px)`,
+                  transition: eventSnap ? 'none' : 'transform 700ms cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+                onTransitionEnd={handleEventTransitionEnd}
+              >
+                {[...events, ...events].map((e, i) => (
                   <div
-                    key={e.name}
-                    className="flex items-center gap-[10px] rounded-[9px] border border-[#c5cdd1] bg-[#DCE2E6] px-[10px] py-[9px] transition hover:border-[#2BB3BD] hover:bg-white"
+                    key={`${e.name}-${i}`}
+                    className="flex h-[58px] shrink-0 items-center gap-[10px] rounded-[9px] border border-[#c5cdd1] bg-[#DCE2E6] px-[10px] transition hover:border-[#2BB3BD] hover:bg-white"
                   >
                     <span className="font-mono text-[9.5px] tracking-[0.8px] text-[#6b7a80]">
                       {e.date}
