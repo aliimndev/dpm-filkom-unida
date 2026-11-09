@@ -301,12 +301,10 @@ function Home() {
           {/* Card Dies Natalis */}
           <div className="flex h-[340px] flex-col overflow-hidden rounded-2xl border border-[#164653] bg-[#164653]">
             <div className="flex flex-1 items-center justify-center overflow-hidden">
-              <div
-                className="h-[260px] w-[260px] rounded-full animate-pulse"
-                style={{
-                  background:
-                    'radial-gradient(circle, #E78E3F 0%, #b86a2a 55%, #164653 100%)',
-                }}
+              <img
+                src="/cctv.webp"
+                alt="CCTV"
+                className="h-full w-full object-cover"
               />
             </div>
             <div className="flex items-center justify-between border-t border-[#164653] px-[18px] py-[13px]">
