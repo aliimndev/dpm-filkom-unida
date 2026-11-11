@@ -15,7 +15,7 @@ export default function SiteFooter() {
             </span>
           </div>
           <p className="m-0 max-w-[320px] text-[13px] leading-[1.6] text-[#a0b0b6]">
-            Dewan Perwakilan Mahasiswa Fakultas Ilmu Komputer, Universitas Brawijaya.
+            Dewan Perwakilan Mahasiswa Fakultas Ilmu Komputer, Universitas Djuanda.
           </p>
         </div>
         <div className="flex flex-wrap gap-8 md:gap-16">
